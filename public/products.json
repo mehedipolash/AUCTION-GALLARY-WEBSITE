@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "title": "Vintage Camera",
+    "description": "A classic 1950s film camera in excellent condition.",
+    "currentBidPrice": 150,
+    "timeLeft": "2d 4h",
+    "bidsCount": 12,
+    "image": "https://i.ibb.co.com/fdjNY3dT/Bid1-min.png"
+  },
+  {
+    "id": 2,
+    "title": "Antique Watch",
+    "description": "Rare antique pocket watch from the early 1900s.",
+    "currentBidPrice": 320,
+    "timeLeft": "1d 1h",
+    "bidsCount": 8,
+    "image": "https://i.ibb.co.com/8Dfb59nw/Bid4-min.png"
+  },
+  {
+    "id": 3,
+    "title": "Electric Guitar",
+    "description": "Fender Stratocaster in great condition, lightly used.",
+    "currentBidPrice": 450,
+    "timeLeft": "3d 6h",
+    "bidsCount": 18,
+    "image": "https://i.ibb.co.com/xSXT0JvQ/Bid2-min.png"
+  },
+  {
+    "id": 4,
+    "title": "Chair",
+    "description": "Genuine leather handbag from a premium brand.",
+    "currentBidPrice": 580,
+    "timeLeft": "5h 30m",
+    "bidsCount": 25,
+    "image": "https://i.ibb.co.com/sJCyTYt2/Bid5-min.png"
+  },
+  {
+    "id": 5,
+    "title": "Rare Comic Book",
+    "description": "First edition Spider-Man comic, well preserved.",
+    "currentBidPrice": 1200,
+    "timeLeft": "4d 2h",
+    "bidsCount": 15,
+    "image": "https://i.ibb.co.com/Gf7ZVjYm/Bid6-min.png"
+  },
+  {
+    "id": 6,
+    "title": "Gaming Laptop",
+    "description": "High-performance gaming laptop with RTX graphics.",
+    "currentBidPrice": 950,
+    "timeLeft": "7h 15m",
+    "bidsCount": 22,
+    "image": "https://i.ibb.co.com/ymjKB1JG/Bid3-min.png"
+  },
+  {
+    "id": 7,
+    "title": "Art Painting",
+    "description": "Original oil painting by a renowned artist.",
+    "currentBidPrice": 2000,
+    "timeLeft": "6d 12h",
+    "bidsCount": 5,
+    "image": "https://i.ibb.co.com/SX2Q85Nb/Bid7-min.png"
+  }
+]
