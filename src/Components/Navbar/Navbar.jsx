@@ -2,12 +2,23 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className="m-5">
-      <div className="navbar bg-base-100 shadow-sm">
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+    <div className="mx-[140px]">
+      <div className="navbar bg-base-100 shadow-sm flex justify-around">
+        <div>
+          <a className="text-xl font-medium">
+            <span className="text-indigo-700">Auction</span>
+            <span className="text-orange-300">Gallery</span>
+          </a>
         </div>
-        <div className="flex-none">
+
+        <div className="space-x-8">
+          <a href="">Home</a>
+          <a href="">Auctions</a>
+          <a href="">Categories</a>
+          <a href="">How to works</a>
+        </div>
+
+        <div>
           {/* Notification Icon */}
           <button className="btn btn-ghost btn-circle">
             <div className="indicator">
