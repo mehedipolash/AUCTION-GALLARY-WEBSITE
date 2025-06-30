@@ -5,7 +5,7 @@ const Navbar = () => {
     <div className="mx-[120px]">
       <div className="navbar  shadow-sm flex justify-between">
         <div>
-          <a className="text-xl font-medium">
+          <a className="text-xl font-bold">
             <span className="text-indigo-700">Auction</span>
             <span className="text-orange-300">Gallery</span>
           </a>
@@ -54,10 +54,6 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 "
-            ></ul>
           </div>
         </div>
       </div>
