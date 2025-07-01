@@ -1,7 +1,7 @@
 import React from 'react';
 import { CiHeart } from 'react-icons/ci';
 
-const Product = ({ product }) => {
+const Product = ({ product, handleBookmark, clickedIds }) => {
   return (
     <tr className="border-b hover:bg-gray-50">
       <td className="px-6 py-4 font-medium text-gray-900">
@@ -17,7 +17,12 @@ const Product = ({ product }) => {
       <td className="px-6 py-4 text-gray-700">${product.currentBidPrice}</td>
       <td className="px-6 py-4 text-gray-600">{product.timeLeft}</td>
       <td className="px-6 py-4">
-        <button>
+        <button
+          onClick={() => handleBookmark(product)}
+          className={`p-2 rounded-full ${
+            clickedIds.includes(product.id) ? 'bg-red-200' : 'bg-gray-200'
+          }`}
+        >
           <CiHeart size={22} />
         </button>
       </td>

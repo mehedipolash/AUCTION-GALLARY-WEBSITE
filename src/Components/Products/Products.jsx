@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
 
-const Products = () => {
+const Products = ({ handleBookmark, clickedIds }) => {
   const [products, setProducts] = useState([]);
+
+  // console.log(handleBookmark)
 
   useEffect(() => {
     fetch('products.json')
@@ -24,7 +26,12 @@ const Products = () => {
           </thead>
           <tbody>
             {products.map(product => (
-              <Product product={product} key={product.id} />
+              <Product
+                product={product}
+                key={product.id}
+                handleBookmark={handleBookmark}
+                clickedIds={clickedIds}
+              />
             ))}
           </tbody>
         </table>

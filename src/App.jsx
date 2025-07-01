@@ -4,8 +4,25 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import Products from './Components/Products/Products';
 import { CiHeart } from 'react-icons/ci';
+import { useState } from 'react';
+import { ImGift } from 'react-icons/im';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const [bookmarked, setBookmarked] = useState([]);
+  const [clickedIds, setClickedIds] = useState([]);
+
+  const handleBookmark = product => {
+    if (!clickedIds.includes(product.id)) {
+      setBookmarked([...bookmarked, product]);
+      setClickedIds([...clickedIds, product.id]);
+      toast.success('item added to list');
+      product.className('text-red');
+      console.log(product);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -20,7 +37,10 @@ function App() {
 
           <div className="main-container flex items-start gap-12">
             <div className="left-container w-[70%]">
-              <Products />
+              <Products
+                handleBookmark={handleBookmark}
+                clickedIds={clickedIds}
+              />
             </div>
 
             <div className="right-container w-[30%] bg-white rounded-2xl">
@@ -31,12 +51,33 @@ function App() {
                 </h2>
               </div>
 
-              <div className="text-center text-gray-500 ">
-                <h2 className="text-lg font-semibold">No Favourite Yet</h2>
-                <p>
-                  Click the heart icon on any item to add it to your favourite
-                </p>
-              </div>
+              {bookmarked.length === 0 ? (
+                <div className="text-center text-gray-500 ">
+                  <h2 className="text-lg font-semibold">No Favourite Yet</h2>
+                  <p>
+                    Click the heart icon on any item to add it to your favourite
+                  </p>
+                </div>
+              ) : (
+                bookmarked.map(marked => (
+                  <div key={marked.id} className="border-1 rounded-md p-2 m-2">
+                    <div className="flex items-center pr-2 gap-x-10">
+                      <img
+                        src={marked.image}
+                        alt={marked.title}
+                        className="w-15 h-15 rounded-xl mb-2"
+                      />
+                      <div>
+                        <p className="font-semibold text-gray-800">
+                          {marked.title}
+                        </p>
+                        <p>${marked.currentBidPrice}</p>
+                        <p>Bids: {marked.bidsCount}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
 
               <div className="mt-6 border-t p-4">
                 <h3 className="text-lg font-bold text-shadow-blue-950">
@@ -47,7 +88,7 @@ function App() {
           </div>
         </div>
       </div>
-
+      <ToastContainer position="top-right" autoClose={2000} />
       <Footer />
     </>
   );
