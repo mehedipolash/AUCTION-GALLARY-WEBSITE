@@ -11,15 +11,24 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const [bookmarked, setBookmarked] = useState([]);
   const [clickedIds, setClickedIds] = useState([]);
-  const [bidsAmount, setBidsAmount] = useState(0); // ✅ Corrected useState
+  const [bidsAmount, setBidsAmount] = useState(0);
 
   const handleBookmark = product => {
     if (!clickedIds.includes(product.id)) {
       setBookmarked([...bookmarked, product]);
       setClickedIds([...clickedIds, product.id]);
-      setBidsAmount(prev => prev + Number(product.currentBidPrice)); // ✅ Fixed variable name + ensured number
+      setBidsAmount(prev => prev + Number(product.currentBidPrice));
       toast.success('Item added to list');
     }
+  };
+
+  const handleRemoveItemFromBookmarked = id => {
+    const updated = bookmarked.filter(item => item.id !== id);
+    const removedItem = bookmarked.find(item => item.id === id);
+    setBookmarked(updated);
+    setClickedIds(clickedIds.filter(cid => cid !== id));
+    setBidsAmount(prev => prev - Number(removedItem.currentBidPrice));
+    toast.info('Item removed from list');
   };
 
   return (
@@ -42,16 +51,16 @@ function App() {
               />
             </div>
 
-            <div className="right-container w-[30%] bg-white rounded-2xl">
-              <div className="flex gap-x-2 items-center mx-[85px] mb-5 border-b">
-                <CiHeart size={35} />
+            <div className="right-container w-[30%] bg-white rounded-2xl p-4">
+              <div className="flex gap-x-2 items-center justify-center mb-5 border-b pb-2">
+                <CiHeart size={28} className="text-red-500" />
                 <h2 className="text-cyan-600 font-semibold text-[22px]">
                   Favorite Items
                 </h2>
               </div>
 
               {bookmarked.length === 0 ? (
-                <div className="text-center text-gray-500 ">
+                <div className="text-center text-gray-500">
                   <h2 className="text-lg font-semibold">No Favourite Yet</h2>
                   <p>
                     Click the heart icon on any item to add it to your
@@ -60,20 +69,33 @@ function App() {
                 </div>
               ) : (
                 bookmarked.map(marked => (
-                  <div key={marked.id} className="border-1 rounded-md p-2 m-2">
-                    <div className="flex items-center pr-2 gap-x-10">
-                      <img
-                        src={marked.image}
-                        alt={marked.title}
-                        className="w-15 h-15 rounded-xl mb-2"
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800">
-                          {marked.title}
-                        </p>
-                        <p>${marked.currentBidPrice}</p>
-                        <p>Bids: {marked.bidsCount}</p>
+                  <div
+                    key={marked.id}
+                    className="border rounded-lg p-3 m-2 shadow-sm bg-gray-50"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <img
+                          src={marked.image}
+                          alt={marked.title}
+                          className="w-14 h-14 rounded-xl object-cover"
+                        />
+                        <div>
+                          <p className="font-semibold text-gray-800">
+                            {marked.title}
+                          </p>
+                          <p className="text-sm">${marked.currentBidPrice}</p>
+                          <p className="text-sm">Bids: {marked.bidsCount}</p>
+                        </div>
                       </div>
+                      <button
+                        onClick={() =>
+                          handleRemoveItemFromBookmarked(marked.id)
+                        }
+                        className="text-red-500 font-bold text-2xl hover:text-red-700"
+                      >
+                        ×
+                      </button>
                     </div>
                   </div>
                 ))
