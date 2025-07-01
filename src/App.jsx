@@ -5,21 +5,20 @@ import Footer from './Components/Footer/Footer';
 import Products from './Components/Products/Products';
 import { CiHeart } from 'react-icons/ci';
 import { useState } from 'react';
-import { ImGift } from 'react-icons/im';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [bookmarked, setBookmarked] = useState([]);
   const [clickedIds, setClickedIds] = useState([]);
+  const [bidsAmount, setBidsAmount] = useState(0); // ✅ Corrected useState
 
   const handleBookmark = product => {
     if (!clickedIds.includes(product.id)) {
       setBookmarked([...bookmarked, product]);
       setClickedIds([...clickedIds, product.id]);
-      toast.success('item added to list');
-      product.className('text-red');
-      console.log(product);
+      setBidsAmount(prev => prev + Number(product.currentBidPrice)); // ✅ Fixed variable name + ensured number
+      toast.success('Item added to list');
     }
   };
 
@@ -46,7 +45,7 @@ function App() {
             <div className="right-container w-[30%] bg-white rounded-2xl">
               <div className="flex gap-x-2 items-center mx-[85px] mb-5 border-b">
                 <CiHeart size={35} />
-                <h2 className="text-cyan-600 font-semibold text-[22px] items-center text-center justify-start">
+                <h2 className="text-cyan-600 font-semibold text-[22px]">
                   Favorite Items
                 </h2>
               </div>
@@ -55,7 +54,8 @@ function App() {
                 <div className="text-center text-gray-500 ">
                   <h2 className="text-lg font-semibold">No Favourite Yet</h2>
                   <p>
-                    Click the heart icon on any item to add it to your favourite
+                    Click the heart icon on any item to add it to your
+                    favourites
                   </p>
                 </div>
               ) : (
@@ -81,13 +81,14 @@ function App() {
 
               <div className="mt-6 border-t p-4">
                 <h3 className="text-lg font-bold text-shadow-blue-950">
-                  Total Bids Amount:
+                  Total Bids Amount: ${bidsAmount}
                 </h3>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <ToastContainer position="top-right" autoClose={2000} />
       <Footer />
     </>
