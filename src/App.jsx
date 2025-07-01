@@ -103,7 +103,7 @@ function App() {
 
               <div className="mt-6 border-t p-4">
                 <h3 className="text-lg font-bold text-shadow-blue-950">
-                  Total Bids Amount: ${bidsAmount}
+                  Total Bids Amount: &nbsp; ${bidsAmount}
                 </h3>
               </div>
             </div>
