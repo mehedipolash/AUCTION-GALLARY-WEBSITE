@@ -19,7 +19,9 @@ const Hero = () => {
               Discover rare collectibles, luxury goods, and vintage <br />{' '}
               treasures in our curated auctions
             </p>
-            <button className="btn rounded-4xl">Explore Auctions</button>
+            <button className="btn rounded-4xl p-6 text-xl">
+              Explore Auctions
+            </button>
           </div>
         </div>
       </div>
