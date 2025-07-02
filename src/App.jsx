@@ -18,7 +18,7 @@ function App() {
       setBookmarked([...bookmarked, product]);
       setClickedIds([...clickedIds, product.id]);
       setBidsAmount(prev => prev + Number(product.currentBidPrice));
-      toast.success('Item added to list');
+      toast.success('Item added favorites');
     }
   };
 
@@ -28,7 +28,7 @@ function App() {
     setBookmarked(updated);
     setClickedIds(clickedIds.filter(cid => cid !== id));
     setBidsAmount(prev => prev - Number(removedItem.currentBidPrice));
-    toast.info('Item removed from list');
+    toast.info('Item removed from favorites');
   };
 
   return (
